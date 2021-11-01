@@ -128,3 +128,42 @@ class Quiz {
     Question('The smallest unit in a digital system is a.........', 'A) Bit',
         'B) Byte', 'C) Character', 'D) Kilobyte', 'A) Bit'),
   ];
+  int nextquestion() {
+    if (previousQuestion.isEmpty) {
+      previousQuestion.add(question);
+    }
+    Random random = new Random();
+    question = random.nextInt(19);
+    for (int j = 0; j < previousQuestion.length; j++) {
+      if (previousQuestion[j] == question) {
+        question = random.nextInt(19);
+      }
+    }
+    previousQuestion.add(question);
+    return question;
+  }
+
+  String getquestiontext(int q) {
+    return questionBox[q].questiontext;
+  }
+
+  String getoptionA(int a) {
+    return questionBox[a].optionA;
+  }
+
+  String getoptionB(int b) {
+    return questionBox[b].optionB;
+  }
+
+  String getoptionC(int c) {
+    return questionBox[c].optionC;
+  }
+
+  String getoptionD(int d) {
+    return questionBox[d].optionD;
+  }
+
+  String getcorrectAnser(int co) {
+    return questionBox[co].correctAnser;
+  }
+}
